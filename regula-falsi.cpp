@@ -1,33 +1,34 @@
 #include<iostream>
 #include<cmath>
 using namespace std;
-float f (float x)
-{
- return (x*x*x-5*x-7);
-// return (x*x*x-x+1);
+double f(double x){
+	return (x*x*x - 5*x - 7);
 }
-int main(){
- 	float a,b,c;
-	int n;
- 	cout<<"enter initial approximation of the root : ";
- 	cin>>a>>b;
- 	if (f(a)*f(b)>=0){
- 	   cout<<"Root may not be lying between a & b"<<endl;
- 	   return 1;
+int main()
+{
+		double a,b,c;
+	     int iteration;
+	     	cout<<"enter a : ";
+	cin>>a;
+		cout<<"enter b : ";
+	cin>>b;
+		cout<<"enter the value of iteration : ";
+	cin>>iteration;
+	
+	if(f(a)*f(b)>0){
+		cout<<"root does not lie in the interval";
 	}
- 	for(n=1;n<=15;n++)
- 	{
- 		c=(b*f(a)-a*f(b))/(f(a)-f(b));
- 		if (fabs(f(c))< 1e-6){
- 		   break;
+	
+	for(int i=0; i<=iteration; i++){
+		c = (a*f(b) - b*f(a)) / (f(b) - f(a));
+		cout<< i<<"\t" <<a<<"\t"<< b<<"\t"<< c<<"\t"<< f(c)<<endl;
+		if(f(c) < 0 ) {
+			a = c;
+			
 		}
- 		if (f(a)*f(c)<0)
-		{
-		   b=c;
+		else{
+			b = c;
 		}
- 		else {
- 		   a=c;
-		}
-	}cout<<"Root : "<<c<<endl;
-	return 0;
-} 
+	}
+	cout <<"Approximate root is " <<c;
+}
