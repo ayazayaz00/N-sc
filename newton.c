@@ -6,7 +6,7 @@ double f(double x) {
 }
 
 double df(double x) {
-    return 3*x*x - 1;
+    return 3*x*x - 2;
 }
 
 int main() {
